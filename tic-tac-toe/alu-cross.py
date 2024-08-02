@@ -26,3 +26,30 @@ possibe win chance;
 - {0}{colum},{0}{colum},{0}{colum},
 - if row[0] == mark and row[1] == mark and row[2] == mark:
 ''''
+def check_winner(board, mark):
+    # Check rows
+    for row in board:
+        if row[0] == mark and row[1] == mark and row[2] == mark:
+            return True
+    # Check columns
+    for col in range(3):
+        if board[0][col] == mark and board[1][col] == mark and board[2][col] == mark:
+            return True
+    # Check diagonals
+    if board[0][0] == mark and board[1][1] == mark and board[2][2] == mark:
+        return True
+    if board[0][2] == mark and board[1][1] == mark and board[2][0] == mark:
+        return True
+    return False
+
+def check_draw(board):
+    for row in board:
+        for cell in row:
+            if cell == " ":
+                return False
+    return True
+
+def Alu_Cross():
+    board = [[" " for _ in range(3)] for _ in range(3)]
+    marks = ["X", "O"]
+    current_mark = 0
