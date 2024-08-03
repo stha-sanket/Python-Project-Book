@@ -41,3 +41,34 @@ def view_tasks():
         for i, task in enumerate(tasks, start=1):
             print(f"{i}. {task}")
 
+
+def main():
+    while True:
+        print("\nTo-Do List Application")
+        print("1. View tasks")
+        print("2. Add task")
+        print("3. Remove task")
+        print("4. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            view_tasks()
+        elif choice == "2":
+            task = input("Enter the task: ")
+            add_task(task)
+        elif choice == "3":
+            view_tasks()
+            try:
+                task_num = int(input("Enter the task number to remove: "))
+                remove_task(task_num)
+            except ValueError:
+                print("Please enter a valid number.")
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+
