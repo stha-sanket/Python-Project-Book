@@ -15,3 +15,29 @@ def save_tasks(tasks):
             f.write(task + "\n")
 
 #To add a task
+def add_task(task):
+    tasks = load_tasks()
+    tasks.append(task)
+    save_tasks(tasks)
+    print(f"Task '{task}' added.")
+
+#To Remove a task
+def remove_task(task_num):
+    tasks = load_tasks()
+    if 0 < task_num <= len(tasks):
+        removed_task = tasks.pop(task_num - 1)
+        save_tasks(tasks)
+        print(f"Task '{removed_task}' removed.")
+    else:
+        print("Invalid task number.")
+
+# To view the task in the list
+def view_tasks():
+    tasks = load_tasks()
+    if not tasks:
+        print("No tasks in the to-do list.")
+    else:
+        print("To-Do List:")
+        for i, task in enumerate(tasks, start=1):
+            print(f"{i}. {task}")
+
