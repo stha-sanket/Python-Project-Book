@@ -7,3 +7,11 @@ def load_tasks():
         return [task.strip() for task in tasks]
     except FileNotFoundError:
         return []
+
+# To save a task
+def save_tasks(tasks):
+    with open(todo_file, "w") as f:
+        for task in tasks:
+            f.write(task + "\n")
+
+#To add a task
