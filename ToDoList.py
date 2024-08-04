@@ -6,8 +6,10 @@ def load_tasks():
     try:
         with open(todo_file, "r") as f:
             tasks = f.readlines()
+        # Strip any extra whitespace/newlines from each task
         return [task.strip() for task in tasks]
     except FileNotFoundError:
+        # If the file doesn't exist, return an empty list
         return []
 
 # To save a task
@@ -70,7 +72,8 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
-
+            
+# Check if this script is being run directly
 if __name__ == "__main__":
     main()
 
